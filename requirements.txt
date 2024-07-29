@@ -2,3 +2,5 @@ Flask
 SpeechRecognition
 moviepy
 pydub
+pytube
+pytubefix
