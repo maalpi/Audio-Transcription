@@ -4,3 +4,5 @@ moviepy
 pydub
 pytube
 pytubefix
+azure-cognitiveservices-speech
+flask-cors

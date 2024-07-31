@@ -3,11 +3,13 @@ import speech_recognition as sr
 import moviepy.editor as mp
 from pydub import AudioSegment
 # from pytube import YouTube
+from flask_cors import CORS
 from pytubefix import YouTube
 from pytubefix.cli import on_progress
 import os
 
 app = Flask(__name__)
+CORS(app)  # Habilita CORS para todos os domínios
 
 # Função para extrair áudio de um vídeo do YouTube
 def extract_audio_from_youtube(url):
