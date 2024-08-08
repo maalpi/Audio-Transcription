@@ -41,14 +41,31 @@ def convert_audio_to_wav(audio_path):
         raise
 
 # Função para transcrever áudio
-def transcribe_audio(audio_path):
+#Defino o chunksize para porções de 60s para caber dentro dos limites da biblioteca
+def transcribe_audio(audio_path, chunksize = 60000): 
     try:
+        sound = AudioSegment.from_wav(audio_path)
+        def divide_chunks(sound, chunksize):
+            # looping till length l
+            for i in range(0, len(sound), chunksize):
+                yield sound[i:i + chunksize]
+        chunks = list(divide_chunks(sound, chunksize))
+        print(f"{len(chunks)} chunks of {chunksize/1000}s each")
+
         recognizer = sr.Recognizer()
-        with sr.AudioFile(audio_path) as source:
-            audio_data = recognizer.record(source)
-            text = recognizer.recognize_google(audio_data, language='pt-BR')
-        print(f"Transcription result: {text}")
-        return text
+        string_index = {}
+
+        for index, chunk in enumerate(chunks):
+            temp = f'temp_{index}.wav'
+            chunk.export(temp, format='wav')
+            with sr.AudioFile(temp) as source:
+                audio = recognizer.record(source)
+            s = recognizer.recognize_google(audio, language="pt-BR")
+            string_index[index] = s
+            os.remove(temp)  # Remove o arquivo temporário após o uso
+
+        return ' '.join([string_index[i] for i in range(len(string_index))])
+
     except Exception as e:
         print(f"Error transcribing audio: {str(e)}")
         raise

@@ -6,3 +6,4 @@ pytube
 pytubefix
 azure-cognitiveservices-speech
 flask-cors
+assemblyai
