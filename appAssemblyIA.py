@@ -4,8 +4,11 @@ from flask_cors import CORS
 from pytubefix import YouTube
 from pytubefix.cli import on_progress
 import os
+from dotenv import load_dotenv
 
-aai.settings.api_key = "apikey"
+load_dotenv()
+
+aai.settings.api_key = os.getenv('API_KEY')
 
 app = Flask(__name__)
 CORS(app)  # Habilita CORS para todos os domínios
