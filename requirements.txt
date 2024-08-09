@@ -7,3 +7,4 @@ pytubefix
 azure-cognitiveservices-speech
 flask-cors
 assemblyai
+python-dotenv
