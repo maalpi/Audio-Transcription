@@ -30,7 +30,7 @@ def extract_audio_from_youtube(url):
         print(f"ERROR ao extrair audio: {str(e)}")
         raise
 
-# Função para converter mp4 para wav
+# Função para transcrever
 def upload_to_assemblyai(audio_path):
     
     config = aai.TranscriptionConfig(language_code="pt")

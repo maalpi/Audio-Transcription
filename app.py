@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 import speech_recognition as sr
 import moviepy.editor as mp
 from pydub import AudioSegment
-# from pytube import YouTube
 from flask_cors import CORS
 from pytubefix import YouTube
 from pytubefix.cli import on_progress
@@ -28,7 +27,7 @@ def extract_audio_from_youtube(url):
         print(f"ERROR ao extrair audio: {str(e)}")
         raise
 
-# Função para converter mp4 para wav
+# Função para converter mp4 para wav, porque o speech_recognition so funciona com arquivos .WAV
 def convert_audio_to_wav(audio_path):
     try:
         audio = AudioSegment.from_file(audio_path)
@@ -45,8 +44,9 @@ def convert_audio_to_wav(audio_path):
 def transcribe_audio(audio_path, chunksize = 60000): 
     try:
         sound = AudioSegment.from_wav(audio_path)
+        # Função para dividir o audios em partes de 60s
         def divide_chunks(sound, chunksize):
-            # looping till length l
+            # looping até o comprimento l
             for i in range(0, len(sound), chunksize):
                 yield sound[i:i + chunksize]
         chunks = list(divide_chunks(sound, chunksize))
