@@ -1,9 +1,8 @@
 # Audio Transcription
 API para transcrever videos do Youtube em PT-BR em um arquivo txt. 
-<video width="560" height="315" controls>
-  <source src="img/videoTranscrev.mp4" type="video/mp4">
-  Seu navegador não suporta a tag de vídeo.
-</video>
+
+https://github.com/user-attachments/assets/c96c01bf-5b9a-48f0-a3fa-bce573e2015b
+
 
 ## Passo-a-passo
 Após fazer o Git Clone, e preparar o ambiente python, execute:
@@ -35,6 +34,7 @@ A diferença entre os dois é que a qualidade do texto traduzido do AssemblyIA �
     </td>
   </tr>
 </table>
+
 ## Tecnologias usadas
 + Python
 + Flask
@@ -62,6 +62,20 @@ This repository contains two functional codes, so you can run the command 'pytho
 <br/>
 <br/>
 The difference between the two is that the transcription quality from AssemblyAI is significantly higher and takes less time to respond to the request.
+
+## Parallel
+<table style="border-collapse: collapse; width: 100%;">
+  <tr>
+    <td style="text-align: center; border: none;">
+      <p><strong>SpeechRecognition</strong></p>
+      <img width="300" src="img/speech.png" alt="SpeechRecognition">
+    </td>
+    <td style="text-align: center; border: none;">
+      <p><strong>AssemblyIA</strong></p>
+      <img width="300" src="img/assemblyIA.png" alt="AssemblyIA">
+    </td>
+  </tr>
+</table>
 
 ## Technologies used
 + Python
